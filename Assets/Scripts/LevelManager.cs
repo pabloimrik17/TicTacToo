@@ -5,20 +5,25 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
 	private int currentLevel;
+	public float autoLoadNextLevelAfter;
 
-	public void LoadLevel (string levelName)
-	{
-		SceneManager.LoadScene(levelName);
+	void Start() {
+		if (autoLoadNextLevelAfter == 0) {
+          
+		} else {
+			Invoke ("LoadNextLevel", autoLoadNextLevelAfter);
+		}
 	}
 
-	public void QuitRequest ()
-	{
-		Application.Quit();
+	public void LoadLevel(string levelName) {
+		SceneManager.LoadScene (levelName);
 	}
 
-	public void LoadNextLevel ()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	public void QuitRequest() {
+		Application.Quit ();
+	}
 
-	}   
+	public void LoadNextLevel() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+	}
 }
