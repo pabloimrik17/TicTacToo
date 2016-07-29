@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: 734cb24ca7fa0554ab7d3d52c4a37807
+timeCreated: 1469567699
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ficha lila sobre blanco-01_0
+    21300002: ficha lila sobre blanco-01_1
+    21300004: ficha lila sobre blanco-01_2
+    21300006: ficha lila sobre blanco-01_3
+    21300008: ficha lila sobre blanco-01_4
+    21300010: ficha lila sobre blanco-01_5
+    21300012: ficha lila sobre blanco-01_6
+    21300014: ficha lila sobre blanco-01_7
+    21300016: ficha lila sobre blanco-01_8
+    21300018: ficha lila sobre blanco-01_9
+    21300020: ficha lila sobre blanco-01_10
+    21300022: ficha lila sobre blanco-01_11
+    21300024: ficha lila sobre blanco-01_12
+    21300026: ficha lila sobre blanco-01_13
+    21300028: ficha lila sobre blanco-01_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 450
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ficha lila sobre blanco-01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.5, y: 55.5}
+        - {x: -55.5, y: 53.5}
+        - {x: -55.5, y: -53.5}
+        - {x: -53.5, y: -55.5}
+        - {x: 52.5, y: -55.5}
+        - {x: 54.5, y: -53.5}
+        - {x: 54.5, y: 53.5}
+        - {x: 52.5, y: 55.5}
+    - name: ficha lila sobre blanco-01_1
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.466675, y: 55.5}
+        - {x: -54.466675, y: 53.5}
+        - {x: -54.466675, y: -53.5}
+        - {x: -52.466675, y: -55.5}
+        - {x: 53.533325, y: -55.5}
+        - {x: 55.533325, y: -53.5}
+        - {x: 55.533325, y: 53.5}
+        - {x: 53.533325, y: 55.5}
+    - name: ficha lila sobre blanco-01_2
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.43335, y: 55.5}
+        - {x: -55.43335, y: 53.5}
+        - {x: -55.43335, y: -53.5}
+        - {x: -53.43335, y: -55.5}
+        - {x: 52.56665, y: -55.5}
+        - {x: 54.56665, y: -53.5}
+        - {x: 54.56665, y: 53.5}
+        - {x: 52.56665, y: 55.5}
+    - name: ficha lila sobre blanco-01_3
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.399994, y: 55.5}
+        - {x: -54.399994, y: 53.5}
+        - {x: -54.399994, y: -53.5}
+        - {x: -52.399994, y: -55.5}
+        - {x: 53.600006, y: -55.5}
+        - {x: 55.600006, y: -53.5}
+        - {x: 55.600006, y: 53.5}
+        - {x: 53.600006, y: 55.5}
+    - name: ficha lila sobre blanco-01_4
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.3667, y: 55.5}
+        - {x: -55.3667, y: 53.5}
+        - {x: -55.3667, y: -53.5}
+        - {x: -53.3667, y: -55.5}
+        - {x: 52.6333, y: -55.5}
+        - {x: 54.6333, y: -53.5}
+        - {x: 54.6333, y: 53.5}
+        - {x: 52.6333, y: 55.5}
+    - name: ficha lila sobre blanco-01_5
+      rect:
+        serializedVersion: 2
+        x: 2750
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.333313, y: 55.5}
+        - {x: -54.333313, y: 53.5}
+        - {x: -54.333313, y: -53.5}
+        - {x: -52.333313, y: -55.5}
+        - {x: 53.666687, y: -55.5}
+        - {x: 55.666687, y: -53.5}
+        - {x: 55.666687, y: 53.5}
+        - {x: 53.666687, y: 55.5}
+    - name: ficha lila sobre blanco-01_6
+      rect:
+        serializedVersion: 2
+        x: 3300
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.299988, y: 55.5}
+        - {x: -55.299988, y: 53.5}
+        - {x: -55.299988, y: -53.5}
+        - {x: -53.299988, y: -55.5}
+        - {x: 52.700012, y: -55.5}
+        - {x: 54.700012, y: -53.5}
+        - {x: 54.700012, y: 53.5}
+        - {x: 52.700012, y: 55.5}
+    - name: ficha lila sobre blanco-01_7
+      rect:
+        serializedVersion: 2
+        x: 3850
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.266663, y: 55.5}
+        - {x: -54.266663, y: 53.5}
+        - {x: -54.266663, y: -53.5}
+        - {x: -52.266663, y: -55.5}
+        - {x: 53.733337, y: -55.5}
+        - {x: 55.733337, y: -53.5}
+        - {x: 55.733337, y: 53.5}
+        - {x: 53.733337, y: 55.5}
+    - name: ficha lila sobre blanco-01_8
+      rect:
+        serializedVersion: 2
+        x: 4400
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.2334, y: 55.5}
+        - {x: -54.2334, y: 53.5}
+        - {x: -54.2334, y: -53.5}
+        - {x: -52.2334, y: -55.5}
+        - {x: 53.7666, y: -55.5}
+        - {x: 55.7666, y: -53.5}
+        - {x: 55.7666, y: 53.5}
+        - {x: 53.7666, y: 55.5}
+    - name: ficha lila sobre blanco-01_9
+      rect:
+        serializedVersion: 2
+        x: 4950
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.19995, y: 55.5}
+        - {x: -54.19995, y: 53.5}
+        - {x: -54.19995, y: -53.5}
+        - {x: -52.19995, y: -55.5}
+        - {x: 53.80005, y: -55.5}
+        - {x: 55.80005, y: -53.5}
+        - {x: 55.80005, y: 53.5}
+        - {x: 53.80005, y: 55.5}
+    - name: ficha lila sobre blanco-01_10
+      rect:
+        serializedVersion: 2
+        x: 5500
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.166626, y: 55.5}
+        - {x: -54.166626, y: 53.5}
+        - {x: -54.166626, y: -53.5}
+        - {x: -52.166626, y: -55.5}
+        - {x: 53.833374, y: -55.5}
+        - {x: 55.833374, y: -53.5}
+        - {x: 55.833374, y: 53.5}
+        - {x: 53.833374, y: 55.5}
+    - name: ficha lila sobre blanco-01_11
+      rect:
+        serializedVersion: 2
+        x: 6050
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.1333, y: 55.5}
+        - {x: -54.1333, y: 53.5}
+        - {x: -54.1333, y: -53.5}
+        - {x: -52.1333, y: -55.5}
+        - {x: 53.8667, y: -55.5}
+        - {x: 55.8667, y: -53.5}
+        - {x: 55.8667, y: 53.5}
+        - {x: 53.8667, y: 55.5}
+    - name: ficha lila sobre blanco-01_12
+      rect:
+        serializedVersion: 2
+        x: 6600
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.099976, y: 55.5}
+        - {x: -54.099976, y: 53.5}
+        - {x: -54.099976, y: -53.5}
+        - {x: -52.099976, y: -55.5}
+        - {x: 53.900024, y: -55.5}
+        - {x: 55.900024, y: -53.5}
+        - {x: 55.900024, y: 53.5}
+        - {x: 53.900024, y: 55.5}
+    - name: ficha lila sobre blanco-01_13
+      rect:
+        serializedVersion: 2
+        x: 7150
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.06665, y: 55.5}
+        - {x: -54.06665, y: 53.5}
+        - {x: -54.06665, y: -53.5}
+        - {x: -52.06665, y: -55.5}
+        - {x: 53.93335, y: -55.5}
+        - {x: 55.93335, y: -53.5}
+        - {x: 55.93335, y: 53.5}
+        - {x: 53.93335, y: 55.5}
+    - name: ficha lila sobre blanco-01_14
+      rect:
+        serializedVersion: 2
+        x: 7700
+        y: 0
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.033325, y: 55.5}
+        - {x: -54.033325, y: 53.5}
+        - {x: -54.033325, y: -53.5}
+        - {x: -52.033325, y: -55.5}
+        - {x: 53.966675, y: -55.5}
+        - {x: 55.966675, y: -53.5}
+        - {x: 55.966675, y: 53.5}
+        - {x: 53.966675, y: 55.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

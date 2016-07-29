@@ -29,11 +29,7 @@ public class GameMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		Screen.fullScreen = false;
-		string[] texto = Translator.Instance.GetText ("StartJugarIA", "es");
-		print (texto [0]);
-		print (SceneManager.GetActiveScene ().name);
 		//TraduceUI ();
-
 
 	}
 	
@@ -43,10 +39,8 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded(int nivel) {
-		print ("llego");
 		if (nivel == 1) {
 			TraduceUI ();
-			print ("hola");
 		}
 	}
 
