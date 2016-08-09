@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+using System.Collections.Generic;
 
 public class PlayerManager : MonoBehaviour {
+	public bool isIA;
 	private bool isPlaying;
 	private int playerNumber;
 	private Color playerColor;
+	private List<List<int[][]>> playerDominatedAreas;
 
 	public PlayerManager (int number, Color color) {
 		this.PlayerNumber = number;

@@ -6,38 +6,30 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public float levelStartDelay = 2f;
-	//Time to wait before starting level, in seconds.
+	public int turnNumber;
 	public int turnDelay;
-	//Delay between each Player turn.
-	public int playerFoodPoints = 100;
-	//Starting value for Player food points.
 	public static GameManager instance = null;
-	//Static instance of GameManager which allows it to be accessed by any other script.
-	[HideInInspector] public bool playersTurn = true;
-	//Boolean to check if it's players turn, hidden in inspector but public.
-	public Color[] colors;
-	public int numberOfPlayers;
+	public  Color[] colors;
+	public Color baseColor;
+	public static int numberOfPlayers;
 	public GameObject playerPrefab;
 	public Text timer;
 	public Image currentPlayerColor;
 	public PlayerManager currentPlayerGO;
 	
 	private Text levelText;
-	//Text to display current level number.
 	private GameObject levelImage;
-	//Image to block out level as levels are being set up, background for levelText.
 	private BoardManager boardScript;
 
 	private bool doingSetup;
 	private bool doingNextPlayer;
 	private List<GameObject> players;
+	public List<List<int>> boardStatus;
 	private int currentPlayer;
-	private float totalTimePerTurn = 4f;
+	private float totalTimePerTurn = 30f;
 	private float timeRemaining;
-
-
-	//Boolean to check if we're setting up board, prevent Player from moving during setup.
-
+	private int squaresToWin = 5;
+	private int squaresToDominateArea = 3; 
 
 	void Awake() {
 		//Check if instance already exists
@@ -53,20 +45,18 @@ public class GameManager : MonoBehaviour {
 				Destroy (gameObject);	
 			
 		//Sets this to not be destroyed when reloading scene
-		DontDestroyOnLoad (gameObject);
-			
-			
-		//Get a component reference to the attached BoardManager script
-		boardScript = GetComponent<BoardManager> ();
-			
-		//Call the InitGame function to initialize the first level 
-		InitGame ();
+		//DontDestroyOnLoad (gameObject);
 	}
 
 	void Start() {
+		numberOfPlayers = 2;
 		currentPlayer = 0;
 		turnDelay = 2;
-		InitTimer();
+		turnNumber = 0;
+		boardScript = GetComponent<BoardManager> ();
+		//Call the InitGame function to initialize the first level 
+		InitGame ();
+		//InitTimer();
 	}
 
 	void Update() {
@@ -75,7 +65,7 @@ public class GameManager : MonoBehaviour {
 		}
 		UpdateTimer();
 		if (timeRemaining <= 0) {
-			Debug.Log ("Siguiente Jugador");	
+			turnNumber++;
 			DoNextPlayer();
 		} else {
 			if (currentPlayerGO.IsPlaying) {
@@ -95,7 +85,11 @@ public class GameManager : MonoBehaviour {
 
 		InitPlayers();
 
-		Debug.Log(players[0].GetComponent<PlayerManager>().PlayerNumber);
+		InitBoardStatus();
+
+		InitTimer();
+
+		//Debug.Log(players[0].GetComponent<PlayerManager>().PlayerNumber);
 
 		doingSetup = false;
 
@@ -125,11 +119,40 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	void InitBoardStatus() {
+		boardStatus = new List<List<int>>();
+		for (int i = 0; i < BoardManager.rows; i++) {
+			boardStatus.Add(new List<int>());
+			for (int j = 0; j < BoardManager.columns; j++) {
+				boardStatus[i].Add(0);
+			}
+		}
+	}
+
 	void UpdateTimer() {
-		//if (timeRemaining > 0) {
+		if (timeRemaining > 0) {
 			timeRemaining -= Time.deltaTime;
 			timer.text = "Tiempo:" + Mathf.Round (timeRemaining); // TODO
-		//}
+		}
+	}
+
+	void UpdateBoardStatus(GameObject square) {
+		boardStatus[square.GetComponent<CasillaManager>().XPosition][square.GetComponent<CasillaManager>().YPosition] = currentPlayerGO.PlayerNumber;
+	}
+
+	void MovementDone(GameObject square) {
+		UpdateBoardStatus (square);
+		if (CheckWinRules ()) {
+			gameObject.GetComponent<LevelManager> ().LoadLevel ("Victoria");		
+		} else {
+			if (CheckLooseRules ()) {
+				gameObject.GetComponent<LevelManager> ().LoadLevel ("Derrota");		
+			} else {
+				CheckCoolRules ();
+				turnNumber++;
+				DoNextPlayer ();
+			}
+		}
 	}
 
 	void DoNextPlayer() {
@@ -147,11 +170,98 @@ public class GameManager : MonoBehaviour {
 		doingNextPlayer = false;
 	}
 
-	void CheckGameRules() {
-		CheckWinCondition();
+	bool CheckWinRules() {
+		return CheckWinCondition();
 	}
 
-	void CheckWinCondition() {
+	bool CheckWinCondition() {
+		bool columnsWin, rowsWin, diagonalWin;
+		columnsWin = rowsWin = diagonalWin = false;
+		columnsWin = CheckColumns(squaresToWin);
+		rowsWin = CheckRows(squaresToWin);
+		diagonalWin = CheckDiagonals(squaresToWin);
 
+		return (columnsWin || rowsWin || diagonalWin);
 	}
+
+	bool CheckColumns(int matchCount) {
+		int playerSquaresCount = 0;
+		for (int j = 0; j < BoardManager.columns; j++) {
+			for (int i = 0; i < BoardManager.rows; i++) {
+				if (boardStatus[i][j] == currentPlayerGO.PlayerNumber) {
+					playerSquaresCount++;
+					if (playerSquaresCount >= matchCount) {
+						return true;
+					}
+				} else {
+					playerSquaresCount = 0;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	bool CheckRows(int matchCount) {
+		int playerSquaresCount = 0;
+		for (int i = 0; i < BoardManager.rows; i++) {
+			for (int j = 0; j < BoardManager.columns; j++) {
+				if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
+					playerSquaresCount++;
+					if (playerSquaresCount >= matchCount) {
+						return true;
+					}
+				} else {
+					playerSquaresCount = 0;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	bool CheckDiagonals(int matchCount) {
+		int playerSquaresCount = 0;
+		for (int i = 0; i < BoardManager.rows; i++) {
+			for (int j = 0; j < BoardManager.columns; j++) {
+				if (i == j) {
+					if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
+						playerSquaresCount++;
+						if (playerSquaresCount >= matchCount) {
+							return true;
+						}
+					} else {
+						playerSquaresCount = 0;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public int getBoardStatusPosition(int x, int y) {
+		
+		return boardStatus[x][y];
+	}
+
+	bool CheckLooseRules() {
+		bool loose = true;
+		for (int i = 0; i < BoardManager.rows; i++) {
+			for (int j = 0; j < BoardManager.columns; j++) {
+				if (boardStatus [i] [j] == 0) {
+					loose = false;
+				}
+			}
+		}
+
+		return loose;
+	}
+
+	void CheckCoolRules() {
+		
+	}
+
+
+
 }

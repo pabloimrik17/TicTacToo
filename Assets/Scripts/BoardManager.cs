@@ -22,8 +22,8 @@ public class BoardManager : MonoBehaviour {
 	}
 
 		
-	public int columns = 8;
-	public int rows = 8;
+	public static int columns = 6;
+	public static int rows = 6;
 	public GameObject[] floorTiles;
 
 	private Transform boardHolder;
@@ -56,15 +56,19 @@ public class BoardManager : MonoBehaviour {
 		{
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
-			
+			int xPosition, yPosition;
+			xPosition = yPosition = 0;
 			//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
-			for(int x = -4; x < columns/2; x++)
+		for(int y = 4; y > -(rows/2); y--)
+			
 			{
 				//Loop along y axis, starting from -1 to place floor or outerwall tiles.
-				for(int y = -3; y < rows/2+1; y++)
+			for(int x = -4; x < columns/2; x++)
 				{
 					//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
 					GameObject toInstantiate = floorTiles[Random.Range (0,floorTiles.Length)];
+					toInstantiate.GetComponent<CasillaManager>().XPosition = xPosition;
+					toInstantiate.GetComponent<CasillaManager>().YPosition = yPosition;
 					
 					//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 					GameObject instance =
@@ -72,7 +76,10 @@ public class BoardManager : MonoBehaviour {
 					
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
+					yPosition++;
 				}
+				xPosition++;
+				yPosition = 0;
 			}
 		}
 		

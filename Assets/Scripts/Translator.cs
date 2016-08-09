@@ -67,7 +67,7 @@ public class Translator {
 	public static Translator Instance {
 		get {
 			if (instance == null) {
-				instance = new Translator (GameMaster.Instance.stringFile);
+				instance = new Translator (ApplicationManager.Instance.stringFile);
 			}
 
 			return instance;
