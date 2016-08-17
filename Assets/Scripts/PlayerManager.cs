@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour {
 	private bool isPlaying;
 	private int playerNumber;
 	private Color playerColor;
-	private List<List<int[][]>> playerDominatedAreas;
+	public List<DominatedArea> playerDominatedAreas;
 
 	public PlayerManager (int number, Color color) {
 		this.PlayerNumber = number;
@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		isPlaying = false;
+		playerDominatedAreas = new List<DominatedArea>();
 	}
 	
 	// Update is called once per frame

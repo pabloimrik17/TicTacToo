@@ -177,39 +177,47 @@ public class GameManager : MonoBehaviour {
 	bool CheckWinCondition() {
 		bool columnsWin, rowsWin, diagonalWin;
 		columnsWin = rowsWin = diagonalWin = false;
-		columnsWin = CheckColumns(squaresToWin);
-		rowsWin = CheckRows(squaresToWin);
-		diagonalWin = CheckDiagonals(squaresToWin);
+		columnsWin = CheckColumns();
+		rowsWin = CheckRows();
+		diagonalWin = CheckDiagonals();
 
 		return (columnsWin || rowsWin || diagonalWin);
 	}
 
-	bool CheckColumns(int matchCount) {
+	bool CheckColumns() {
 		int playerSquaresCount = 0;
 		for (int j = 0; j < BoardManager.columns; j++) {
 			for (int i = 0; i < BoardManager.rows; i++) {
-				if (boardStatus[i][j] == currentPlayerGO.PlayerNumber) {
+				if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
 					playerSquaresCount++;
-					if (playerSquaresCount >= matchCount) {
+					if (playerSquaresCount >= squaresToWin) {
 						return true;
 					}
+					if (playerSquaresCount == squaresToDominateArea) {
+						DominatedArea dominatedArea = CalculateDominatedAreaCorner(j, i, "columns");
+						currentPlayerGO.GetComponent<PlayerManager>().playerDominatedAreas.Add(dominatedArea);
+					}
+
 				} else {
 					playerSquaresCount = 0;
 				}
 			}
 		}
-
 		return false;
 	}
 
-	bool CheckRows(int matchCount) {
+	bool CheckRows() {
 		int playerSquaresCount = 0;
 		for (int i = 0; i < BoardManager.rows; i++) {
 			for (int j = 0; j < BoardManager.columns; j++) {
 				if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
 					playerSquaresCount++;
-					if (playerSquaresCount >= matchCount) {
+					if (playerSquaresCount >= squaresToWin) {
 						return true;
+					}
+					if (playerSquaresCount == squaresToDominateArea) {
+						DominatedArea dominatedArea = CalculateDominatedAreaCorner(i, j, "rows");
+						currentPlayerGO.GetComponent<PlayerManager>().playerDominatedAreas.Add(dominatedArea);
 					}
 				} else {
 					playerSquaresCount = 0;
@@ -220,14 +228,18 @@ public class GameManager : MonoBehaviour {
 		return false;
 	}
 
-	bool CheckDiagonals(int matchCount) {
+	bool CheckDiagonals() {
+		return CheckRDiagonal() || CheckLDiagonal();
+	}
+
+	bool CheckRDiagonal() {
 		int playerSquaresCount = 0;
 		for (int i = 0; i < BoardManager.rows; i++) {
 			for (int j = 0; j < BoardManager.columns; j++) {
 				if (i == j) {
 					if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
 						playerSquaresCount++;
-						if (playerSquaresCount >= matchCount) {
+						if (playerSquaresCount >= squaresToWin) {
 							return true;
 						}
 					} else {
@@ -236,7 +248,25 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
+		return false;
+	}
 
+	bool CheckLDiagonal() {
+		int playerSquaresCount = 0;
+		for (int i = (BoardManager.rows -1); i > 0; i--) {
+			for (int j = (BoardManager.columns -1); j > 0; j--) {
+				if (i == j) {
+					if (boardStatus [i] [j] == currentPlayerGO.PlayerNumber) {
+						playerSquaresCount++;
+						if (playerSquaresCount >= squaresToWin) {
+							return true;
+						}
+					} else {
+						playerSquaresCount = 0;
+					}
+				}
+			}
+		}
 		return false;
 	}
 
@@ -258,9 +288,58 @@ public class GameManager : MonoBehaviour {
 		return loose;
 	}
 
-	void CheckCoolRules() {
-		
+	DominatedArea CalculateDominatedAreaCorner(int i, int j, string searchMode) {
+		int xLeftCorner, yLeftCorner, xRightCorner, yRightCorner;
+		xLeftCorner = yLeftCorner = xRightCorner = yRightCorner = 0;
+		switch (searchMode) {
+			case "rows":
+				xLeftCorner = i - (squaresToDominateArea - 2);
+				yLeftCorner = j - (squaresToDominateArea - 1);
+
+				xRightCorner = i + (squaresToDominateArea - 2);
+				yRightCorner = j;
+				break;
+			case "columns":
+				xLeftCorner = i - (squaresToDominateArea - 2);
+				yLeftCorner = j - (squaresToDominateArea - 1);
+
+				xRightCorner = i + (squaresToDominateArea - 2);
+				yRightCorner = j;
+				break;
+			case "rDiagonal":
+				xLeftCorner = i - (squaresToDominateArea - 2);
+				yLeftCorner = j - (squaresToDominateArea - 1);
+
+				xRightCorner = i + (squaresToDominateArea - 2);
+				yRightCorner = j;
+				break;
+			case "lDiagonal":
+				xLeftCorner = i - (squaresToDominateArea - 2);
+				yLeftCorner = j - (squaresToDominateArea - 1);
+
+				xRightCorner = i + (squaresToDominateArea - 2);
+				yRightCorner = j;
+				break;
+		}
+
+		if (xLeftCorner < 0) {
+			xLeftCorner = 0;
+		}
+
+		if (xRightCorner >= BoardManager.columns) {
+			xRightCorner = BoardManager.columns - 1;
+		}
+
+		DominatedArea dominatedArea = new DominatedArea(xLeftCorner, yLeftCorner, xRightCorner, yRightCorner);
+
+		return dominatedArea;
 	}
+
+	void DrawDominatedArea(DominatedArea dominatedArea) {
+
+	}
+		
+	
 
 
 
