@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour {
 			if (CheckLooseRules ()) {
 				gameObject.GetComponent<LevelManager> ().LoadLevel ("Derrota");		
 			} else {
-				CheckCoolRules ();
+				//TODO CheckCoolRules (); 
 				turnNumber++;
 				DoNextPlayer ();
 			}
